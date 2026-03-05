@@ -157,7 +157,8 @@ class AutoDialer:
     def run(self):
         """运行自动拨号监控"""
         self.log("=" * 60)
-        self.log("🚀 自动拨号程序启动 (v3.2 快速版)")
+        self.log("🚀 自动拨号程序启动 (v3.2)")
+        self.log("🐱 支持⭐Github ： https://github.com/YYchainsAw/")
         self.log(f"📡 连接名称: {self.connection_name}")
         self.log(f"👤 用户名: {self.username}")
         self.log(f"⏱ 检查间隔: {self.check_interval}秒")
@@ -254,13 +255,14 @@ def main():
     except:
         pass
 
-    CONNECTION_NAME = "Netkeeper"
-    USERNAME = "202426704040@jxsd"
-    PASSWORD = "704040"
+    CONNECTION_NAME = "YOURCONNECTIONNAME"
+    USERNAME = "YOURUSERNAME"
+    PASSWORD = "YOURPASSWORD"
 
     dialer = AutoDialer(CONNECTION_NAME, USERNAME, PASSWORD)
     dialer.run()
 
 
 if __name__ == "__main__":
+
     main()
