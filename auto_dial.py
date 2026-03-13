@@ -38,6 +38,7 @@ class AutoDialer:
         ]
 
         for host, port in tcp_targets:
+            sock = None
             try:
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 sock.settimeout(2)
@@ -46,7 +47,8 @@ class AutoDialer:
                 return True
             except:
                 try:
-                    sock.close()
+                    if sock:
+                        sock.close()
                 except:
                     pass
                 continue
@@ -157,8 +159,7 @@ class AutoDialer:
     def run(self):
         """运行自动拨号监控"""
         self.log("=" * 60)
-        self.log("🚀 自动拨号程序启动 (v3.2)")
-        self.log("🐱 支持⭐Github ： https://github.com/YYchainsAw/")
+        self.log("🚀 自动拨号程序启动 (v3.2 快速版)")
         self.log(f"📡 连接名称: {self.connection_name}")
         self.log(f"👤 用户名: {self.username}")
         self.log(f"⏱ 检查间隔: {self.check_interval}秒")
@@ -174,6 +175,7 @@ class AutoDialer:
             self.log("✅ 网络正常，进入监控模式")
         elif not is_active:
             self.log("⚠ 连接未激活，将尝试建立连接")
+            self.dial_connection(force_disconnect=False)
 
         self.log("=" * 60)
 
@@ -255,14 +257,13 @@ def main():
     except:
         pass
 
-    CONNECTION_NAME = "YOURCONNECTIONNAME"
-    USERNAME = "YOURUSERNAME"
-    PASSWORD = "YOURPASSWORD"
+    CONNECTION_NAME = "Netkeeper"
+    USERNAME = "202426704040@jxsd"
+    PASSWORD = "704040"
 
     dialer = AutoDialer(CONNECTION_NAME, USERNAME, PASSWORD)
     dialer.run()
 
 
 if __name__ == "__main__":
-
     main()
